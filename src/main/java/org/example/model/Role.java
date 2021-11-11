@@ -2,10 +2,17 @@ package org.example.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
-
-
-import javax.persistence.*;
-import java.util.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "roles")
@@ -18,7 +25,7 @@ public class Role implements GrantedAuthority {
     @Column(name = "name")
     private String roleName;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "roles")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roles")
     private List<User> users = new ArrayList<>();
 
     public List<User> getUsers() {
