@@ -17,6 +17,4 @@ public interface UserDAO {
     void updateUser(User user);
 
     UserDetails loadUserByUsername(String userName);
-
-    void addInitUser(User user);
 }
